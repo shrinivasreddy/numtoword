@@ -3,26 +3,14 @@
  */
 package com.lbg.numtoword.services;
 
+import com.lbg.numtoword.constants.NumToWordConstants;
+
 /**
  * @author Shrini
  *
  */
 public class NumToWordConverterServicesImpl implements
 		NumToWordConverterServices {
-	private final static String[] DIGITS = { "", "one", "two", "three", "four",
-			"five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve",
-			"thirteen", "fourteen", "fifteen", "sixteen", "seventeen",
-			"eighteen", "nineteen" };
-
-	private final static String[] MULTIPLE_OF_TENS = { "", "", "twenty",
-			"thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
-
-	private final static String[] MILESTONES = { "", " thousand", " million" };
-
-	private final static String HUNDERD_CONSTANT = "hundred";
-
-	private final static String ZERO = "zero";
-
 	public String toWord(long num) {
 
 		// Validate input
@@ -33,7 +21,7 @@ public class NumToWordConverterServicesImpl implements
 
 		// handle zero
 		if (num == 0) {
-			return ZERO;
+			return NumToWordConstants.ZERO;
 		}
 
 		final boolean isNegative = (num < 0) ? true : false;
@@ -48,7 +36,7 @@ public class NumToWordConverterServicesImpl implements
 
 		do {
 			if (part > 0) {
-				words = toWordsFromThreeDigits(part) + MILESTONES[index]
+				words = toWordsFromThreeDigits(part) + NumToWordConstants.MILESTONES[index]
 						+ words;
 			}
 			tempNum = tempNum / 1000;
@@ -75,21 +63,21 @@ public class NumToWordConverterServicesImpl implements
 		int hunderds_place = input / 100;
 		int reminder = input % 100;
 		final String space = (reminder > 0) ? " " : "";
-		return DIGITS[hunderds_place] + " " + HUNDERD_CONSTANT + space
+		return NumToWordConstants.DIGITS[hunderds_place] + " " + NumToWordConstants.HUNDERD_CONSTANT + space
 				+ toWordsFromTwoDigit(reminder);
 	}
 
 	private static String toWordsFromTwoDigit(final int input) {
 
 		if (input < 20) {
-			return DIGITS[input];
+			return NumToWordConstants.DIGITS[input];
 		}
 
 		final int ones_place = input % 10;
 		final int tens_place = input / 10;
 		final String space = (ones_place > 0) ? " " : "";
-		final String words = MULTIPLE_OF_TENS[tens_place] + space
-				+ DIGITS[ones_place];
+		final String words = NumToWordConstants.MULTIPLE_OF_TENS[tens_place] + space
+				+ NumToWordConstants.DIGITS[ones_place];
 
 		return words;
 	}

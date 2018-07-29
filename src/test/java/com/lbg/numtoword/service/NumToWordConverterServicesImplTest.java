@@ -28,4 +28,24 @@ public class NumToWordConverterServicesImplTest {
 		Assert.assertEquals("ten thousand five", numToWord.toWord(10005));
 	}
  
+	@Test
+	public void toWordNegetiveNumberTest(){
+		Assert.assertEquals("ten", numToWord.toWord(-10));
+		Assert.assertEquals("ten thousand five", numToWord.toWord(-10005));
+	}
+	
+	
+	@Test
+	public void toWordZeroNumberTest(){
+		Assert.assertEquals("ten", numToWord.toWord(0));
+		Assert.assertEquals("ten thousand five", numToWord.toWord(-0));
+	}
+	
+	
+	@Test
+	public void toWordBoundaryConditionNumberTest(){
+		Assert.assertEquals("ten", numToWord.toWord(999999999));
+		Assert.assertEquals("ten thousand five", numToWord.toWord(-999999999));
+	}
+	
 }
