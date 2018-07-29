@@ -1,4 +1,6 @@
 com\lbg\numtoword\Application.class
+com\lbg\numtoword\exception\ExceedRangeException.class
 com\lbg\numtoword\services\NumToWordConverterServices.class
 com\lbg\numtoword\services\NumToWordConverterServicesImpl.class
-com\lbg\numtoword\exception\NumToWordException.class
+com\lbg\numtoword\constants\NumToWordConstants.class
+com\lbg\numtoword\utlility\NumToWordUtility.class

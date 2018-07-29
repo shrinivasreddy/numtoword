@@ -3,7 +3,6 @@
  */
 package com.lbg.numtoword;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import org.apache.log4j.BasicConfigurator;
@@ -20,8 +19,7 @@ import com.lbg.numtoword.services.NumToWordConverterServicesImpl;
 public class Application {
 	private static final Logger LOG = Logger.getLogger(Application.class);
 	private static NumToWordConverterServices numToWordConverter;
-	private static long num;
-	private static String condition;
+	private static String num;
     private static Scanner sc;
     private static String word;
 	/**
@@ -36,30 +34,24 @@ public class Application {
 		System.out.println("***Number to word converter***");
 		System.out.println("******************************");
 		numToWordConverter = new NumToWordConverterServicesImpl();
-		condition = "N";
 		sc = new Scanner(System.in);
-		try{
 			do{
 				System.out.println("Enter a number");
-				num = sc.nextLong();
 				//enter a number
 				try {
-					word = numToWordConverter.toWord(num);
+					num = sc.next();
+					if(num.equalsIgnoreCase("n"))
+						break;
+					word = numToWordConverter.toWord(new Long(num));
 					LOG.info(num+" - "+word);
-				} catch (ExceedRangeException e) {
-					// TODO Auto-generated catch block
+				}catch (ExceedRangeException e) {
 					LOG.warn("Invalid input! Give input between -999999999 to 999999999 inclusive."+e);
-					//e.printStackTrace();
+				}catch(NumberFormatException e){
+					LOG.warn("Need to enter numeric only");
+					System.out.println("Numeric only :"+e);
 				}
-				System.out.println("Do you want to continue (Y/N)");
-				condition = sc.next();
-				if(!(condition.equalsIgnoreCase("y")||condition.equalsIgnoreCase("n")))
-					System.out.println("wrong");
-			}while(condition.equalsIgnoreCase("Y"));
-		}catch(InputMismatchException e){
-			LOG.warn("Need to enter numeric only");
-			System.out.println("Numeric only :"+e);
-			
-		}
+				System.out.println("If you want to Quit press 'N'");
+			}while(true);
+			System.out.println("Exit");
 	}
 }
