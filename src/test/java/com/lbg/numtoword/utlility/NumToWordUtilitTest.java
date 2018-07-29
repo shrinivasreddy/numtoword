@@ -1,19 +1,9 @@
 package com.lbg.numtoword.utlility;
 
-import static org.junit.Assert.*;
-
 import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class NumToWordUtilitTest {
-	
-	private static NumToWordUtility numToWordUtil;
-
-	@BeforeClass
-	public static void setUp() {
-		numToWordUtil = new NumToWordUtility();
-	}
 
 	@Test
 	public void toWordsFromThreeDigitsTest() {
