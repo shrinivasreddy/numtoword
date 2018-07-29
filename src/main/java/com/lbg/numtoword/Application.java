@@ -9,6 +9,7 @@ import java.util.Scanner;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
+import com.lbg.numtoword.exception.ExceedRangeException;
 import com.lbg.numtoword.services.NumToWordConverterServices;
 import com.lbg.numtoword.services.NumToWordConverterServicesImpl;
 
@@ -25,6 +26,7 @@ public class Application {
     private static String word;
 	/**
 	 * @param args
+	 * @throws  
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -41,8 +43,14 @@ public class Application {
 				System.out.println("Enter a number");
 				num = sc.nextLong();
 				//enter a number
-				word = numToWordConverter.toWord(num);
-				LOG.info(num+" - "+word);
+				try {
+					word = numToWordConverter.toWord(num);
+					LOG.info(num+" - "+word);
+				} catch (ExceedRangeException e) {
+					// TODO Auto-generated catch block
+					LOG.warn("Invalid input! Give input between -999999999 to 999999999 inclusive."+e);
+					//e.printStackTrace();
+				}
 				System.out.println("Do you want to continue (Y/N)");
 				condition = sc.next();
 				if(!(condition.equalsIgnoreCase("y")||condition.equalsIgnoreCase("n")))
@@ -52,9 +60,6 @@ public class Application {
 			LOG.warn("Need to enter numeric only");
 			System.out.println("Numeric only :"+e);
 			
-		}catch (IllegalArgumentException e) {
-			LOG.warn(e);
-			// TODO: handle exception
 		}
 	}
 }
