@@ -46,7 +46,7 @@ public class NumToWordConverterServicesImpl implements
 			index++;
 			// Add extra space if next part is not zero
 			if (part > 0 && !words.equals("")) {
-				words = " " + words;
+				words = " and " + words;
 			}
 		} while (tempNum > 0);
 

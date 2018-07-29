@@ -27,8 +27,8 @@ public class NumToWordConverterServicesImplTest {
 	public void toWordTest() throws ExceedRangeException {
 		Assert.assertEquals("ten", numToWord.toWord(10));
 		Assert.assertEquals("(ten)", numToWord.toWord(-10));
-		Assert.assertEquals("ten thousand five", numToWord.toWord(10005));
-		Assert.assertEquals("(ten thousand five)", numToWord.toWord(-10005));
+		Assert.assertEquals("ten thousand and five", numToWord.toWord(10005));
+		Assert.assertEquals("(ten thousand and five)", numToWord.toWord(-10005));
 		Assert.assertEquals("zero", numToWord.toWord(0));
 	}
 	
