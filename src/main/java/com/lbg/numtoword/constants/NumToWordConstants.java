@@ -4,7 +4,7 @@
 package com.lbg.numtoword.constants;
 
 /**
- * @author Balu
+ * @author Shrini
  *
  */
 public class NumToWordConstants {
