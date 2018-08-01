@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 
 import com.lbg.numtoword.exception.ExceedRangeException;
 import com.lbg.numtoword.services.NumToWordConverterServices;
+import com.lbg.numtoword.services.NumToWordConverterServicesFactory;
 import com.lbg.numtoword.services.NumToWordConverterServicesImpl;
 
 /**
@@ -33,7 +34,7 @@ public class Application {
 		System.out.println("******************************");
 		System.out.println("***Number to word converter***");
 		System.out.println("******************************");
-		numToWordConverter = new NumToWordConverterServicesImpl();
+		numToWordConverter = NumToWordConverterServicesFactory.getNumToWordConverterServices();
 		sc = new Scanner(System.in);
 			do{
 				System.out.println("Enter a number");
