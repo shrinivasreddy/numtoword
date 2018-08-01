@@ -4,7 +4,7 @@
 package com.lbg.numtoword.exception;
 
 /**
- * @author Balu
+ * @author Shrini
  *
  */
 public class ExceedRangeException extends Exception{
